@@ -1,11 +1,14 @@
 pipeline {
-    agent none
+    agent node
 
     stages {
         stage('Build') {
             steps {
-                echo 'Building..'
-                sh "npm install"
+                
+                nodejs(nodeJSInstallationName: 'node'){
+                    echo 'Building..'
+                    sh "npm install"
+                }
             }
         }
         stage('Test') {
