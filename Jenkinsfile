@@ -14,7 +14,7 @@ pipeline {
             steps {
                 nodejs(nodeJSInstallationName: 'node'){
                     echo 'Deploying....'
-                    sh "node app"
+                    sh "./scripts/startApp.sh"
                 }
             }
         }
