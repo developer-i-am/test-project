@@ -10,16 +10,19 @@ pipeline {
                 }
             }
         }
-        stage('Test') {
-            steps {
-                echo 'Testing..'
-            }
-        }
         stage('Deploy') {
             steps {
                 nodejs(nodeJSInstallationName: 'node'){
                     echo 'Deploying....'
                     sh "node app"
+                }
+            }
+        }
+        stage('Test') {
+            steps {
+                nodejs(nodeJSInstallationName: 'node'){
+                    echo 'Testing..'
+                    sh "npm run test"
                 }
             }
         }
