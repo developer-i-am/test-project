@@ -4,7 +4,6 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                
                 nodejs(nodeJSInstallationName: 'node'){
                     echo 'Building..'
                     sh "npm install"
@@ -18,7 +17,10 @@ pipeline {
         }
         stage('Deploy') {
             steps {
-                echo 'Deploying....'
+                nodejs(nodeJSInstallationName: 'node'){
+                    echo 'Deploying....'
+                    sh "node app"
+                }
             }
         }
     }
